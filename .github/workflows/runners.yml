@@ -31,7 +31,7 @@ jobs:
 
       - run: |
           for dir in ${{ steps.changed-files.outputs.all_modified_files }}; do
-            echo dir
+            echo $dir
           done
           echo ${{ steps.changed-files.outputs.all_modified_files_count }}
 
