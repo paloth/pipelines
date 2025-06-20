@@ -46,7 +46,7 @@ jobs:
         id: name
         with:
           text: ${{ matrix.dirs }}
-          regex: '^.+\/(.+)\/'
+          regex: '^.+\/(.+)'
 
       - run: |
           echo ${{ matrix.dirs }}
