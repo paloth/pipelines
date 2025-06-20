@@ -49,4 +49,6 @@ jobs:
           regex: '^.+\/(.+)\/'
 
       - run: |
+          echo ${{ matrix.dirs }}
+          echo ${{ steps.name.outputs.match }}
           echo ${{ steps.name.outputs.group1 }}
