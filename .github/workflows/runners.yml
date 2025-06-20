@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       changed: ${{ steps.changed-files.outputs.all_modified_files }}
+      name: ${{ steps.name.outputs.group1 }}
     steps:
       - name: Checkout sources
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -40,5 +41,12 @@ jobs:
       matrix: 
         dirs: ${{ fromJson(needs.changes.outputs.changed) }}
     steps:
+      - name: Get env name
+        uses: actions-ecosystem/action-regex-match@d50fd2e7a37d0e617aea3d7ada663bd56862b9cc
+        id: name
+        with:
+          text: ${{ matrix.dirs }}
+          regex: '^.+\/(.+)\/'
+
       - run: |
-          echo ${{ matrix.dirs }}
+          echo ${{ steps.name.outputs.group1 }}
