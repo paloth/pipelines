@@ -42,7 +42,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix: 
-        dirs: ${{ toJson(needs.changes.outputs.changed) }}
+        dirs: ${{ fromJson(needs.changes.outputs.changed) }}
     steps:
       - run: |
           echo ${{ matrix.dirs }}
