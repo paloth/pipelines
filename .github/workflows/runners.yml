@@ -32,7 +32,6 @@ jobs:
 
       - run: |
           echo ${{ steps.changed-files.outputs.all_modified_files }}
-          echo ${{ steps.changed-files.outputs.all_modified_files_count }}
 
   build:
     name: Build runners' images
